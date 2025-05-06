@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: '{{.Release.Name}}-frontend'
+      annotations:
+        checksum/config: '{{ include (print $.Template.BasePath "/frontend_cm.yaml") . | sha256sum }}'
     spec:
       initContainers:
         - name: wait-for-backend

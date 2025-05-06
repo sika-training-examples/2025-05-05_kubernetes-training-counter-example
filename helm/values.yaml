@@ -3,3 +3,5 @@ frontendHost:
 
 # optional
 backendHost:
+FONT_COLOR: 'black'
+BACKGROUND_COLOR: 'white'

@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: '{{.Release.Name}}-frontend'
 data:
-  FONT_COLOR: '#20883D'
-  BACKGROUND_COLOR: '#F7F8FA'
+  FONT_COLOR: {{ .Values.FONT_COLOR | quote }}
+  BACKGROUND_COLOR: {{ .Values.BACKGROUND_COLOR | quote }}
