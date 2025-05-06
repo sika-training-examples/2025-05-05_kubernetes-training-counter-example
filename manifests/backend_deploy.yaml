@@ -29,7 +29,7 @@ spec:
             - name: SLOW_START
               value: '20'
             - name: EXTRA_TEXT
-              value: v2
+              value: manifests
           ports:
             - containerPort: 80
           readinessProbe:
