@@ -25,7 +25,7 @@ spec:
           image: ghcr.io/ondrejsika/counter-frontend
           resources:
             requests:
-              cpu: 100m
+              cpu: 50m
               memory: 100Mi
             limits:
               cpu: 300m
