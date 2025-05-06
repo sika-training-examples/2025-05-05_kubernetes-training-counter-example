@@ -27,7 +27,7 @@ spec:
             - name: REDIS
               value: '{{.Release.Name}}-redis'
             - name: SLOW_START
-              value: '20'
+              value: '5'
             {{ if .Values.EXTRA_TEXT }}
             - name: EXTRA_TEXT
               value: '{{ .Values.EXTRA_TEXT }}'
