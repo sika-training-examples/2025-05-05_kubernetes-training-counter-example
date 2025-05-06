@@ -28,5 +28,19 @@ spec:
               value: redis
             - name: SLOW_START
               value: '20'
+            - name: EXTRA_TEXT
+              value: v2
           ports:
             - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 1
+          livenessProbe:
+            httpGet:
+              path: /livez
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 1
