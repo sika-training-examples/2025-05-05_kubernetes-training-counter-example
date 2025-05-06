@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: counter
+  name: backend
 spec:
   replicas: 4
   revisionHistoryLimit: 0
   selector:
     matchLabels:
-      app: counter
+      app: backend
   template:
     metadata:
       labels:
-        app: counter
+        app: backend
     spec:
       containers:
         - name: main

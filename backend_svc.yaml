@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: counter
+  name: backend
 spec:
   selector:
-    app: counter
+    app: backend
   ports:
     - port: 80
