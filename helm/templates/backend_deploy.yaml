@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: '{{.Release.Name}}-backend'
 spec:
   replicas: 2
   revisionHistoryLimit: 0
   selector:
     matchLabels:
-      app: backend
+      app: '{{.Release.Name}}-backend'
   template:
     metadata:
       labels:
-        app: backend
+        app: '{{.Release.Name}}-backend'
     spec:
       containers:
         - name: main
@@ -25,7 +25,7 @@ spec:
               memory: 60Mi
           env:
             - name: REDIS
-              value: redis
+              value: '{{.Release.Name}}-redis'
             - name: SLOW_START
               value: '20'
             - name: EXTRA_TEXT

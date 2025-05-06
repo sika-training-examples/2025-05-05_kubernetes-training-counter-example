@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: '{{.Release.Name}}-frontend'
 spec:
   replicas: 2
   revisionHistoryLimit: 0
   selector:
     matchLabels:
-      app: frontend
+      app: '{{.Release.Name}}-frontend'
   template:
     metadata:
       labels:
-        app: frontend
+        app: '{{.Release.Name}}-frontend'
     spec:
       initContainers:
         - name: wait-for-backend
@@ -19,7 +19,7 @@ spec:
           args:
             - /bin/sh
             - -c
-            - slu wait-for tcp -a backend:80
+            - slu wait-for tcp -a {{.Release.Name}}-backend:80
       containers:
         - name: main
           image: ghcr.io/ondrejsika/counter-frontend
@@ -32,10 +32,10 @@ spec:
               memory: 300Mi
           env:
             - name: API_ORIGIN
-              value: http://backend
+              value: 'http://{{.Release.Name}}-backend'
           envFrom:
             - configMapRef:
-                name: frontend
+                name: '{{.Release.Name}}-frontend'
           ports:
             - containerPort: 3000
           readinessProbe:
