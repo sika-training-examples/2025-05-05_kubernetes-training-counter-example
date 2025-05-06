@@ -28,8 +28,10 @@ spec:
               value: '{{.Release.Name}}-redis'
             - name: SLOW_START
               value: '20'
+            {{ if .Values.EXTRA_TEXT }}
             - name: EXTRA_TEXT
-              value: v2
+              value: '{{ .Values.EXTRA_TEXT }}'
+            {{- end }}
           ports:
             - containerPort: 80
           readinessProbe:
